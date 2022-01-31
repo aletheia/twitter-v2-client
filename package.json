@@ -30,8 +30,10 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
+    "axios": "^0.25.0",
     "dotenv": "^15.0.0",
     "nconf": "^0.11.3",
+    "request": "^2.88.2",
     "tsyringe": "^4.6.0",
     "winston": "^3.5.0"
   }
