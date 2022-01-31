@@ -9,7 +9,7 @@ export interface LoggerConfig {
 @injectable()
 @singleton()
 export class Logger {
-  protected _logger: WLogger;
+  public _logger: WLogger;
 
   constructor() {
     let config = {
