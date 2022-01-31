@@ -56,7 +56,7 @@ export class TwitterClient<T> {
   ): Promise<T[]> {
     try {
       const response = await this.client({url, method, data});
-      const payload = response.data as TwitterResponsePayload;
+      const payload = response.data as TwitterResponsePayload<T>;
       const twitterResponse = TwitterResponse.fromJson<T>(payload);
       return twitterResponse.unwrap();
     } catch (e) {

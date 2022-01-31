@@ -5,8 +5,8 @@ export interface TwitterResponseMeta {
   sent?: string;
 }
 
-export interface TwitterResponsePayload {
-  data: any;
+export interface TwitterResponsePayload<T> {
+  data: T[];
   meta: TwitterResponseMeta;
 }
 
@@ -14,12 +14,15 @@ export class TwitterResponse<T> {
   private data: T[];
   private meta?: TwitterResponseMeta;
 
-  static fromJson<T>(json: any): TwitterResponse<T> {
+  static fromJson<T>(json: {
+    data: T[];
+    meta: TwitterResponseMeta;
+  }): TwitterResponse<T> {
     const response = new TwitterResponse<T>({data: json.data, meta: json.meta});
     return response;
   }
 
-  constructor(response: {data: T[]; meta?: TwitterResponseMeta}) {
+  constructor(response: TwitterResponsePayload<T>) {
     this.data = response.data;
     this.meta = response.meta;
   }
