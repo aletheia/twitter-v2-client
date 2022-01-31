@@ -1,14 +1,25 @@
 {
-  "name": "twitter-v2",
+  "name": "twitter-v2-client",
+  "author": {
+    "name": "aletheia"
+  },
   "version": "0.0.1",
   "description": "Node.js / Typescript Twitter API wrapper for v.2.0",
-  "main": "build/src/index.js",
-  "types": "build/src/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
   "license": "Apache-2.0",
-  "keywords": [],
+  "keywords": [
+    "twitter",
+    "api",
+    "wrapper"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aletheia/twitter-v2-client.git"
+  },
   "scripts": {
     "test": "jest",
     "lint": "gts lint",
@@ -18,7 +29,11 @@
     "prepare": "npm run compile",
     "pretest": "npm run compile",
     "posttest": "npm run lint",
-    "watch": "jest --watch"
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "watch": "jest --watch",
+    "version": "git add -A src"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
